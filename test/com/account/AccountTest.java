@@ -45,11 +45,54 @@ class AccountTest {
 
     @Test
     void withdrawWithPinTest(){
+        account.depositMoney(5000);
+        account.withdrawWithPin(1564, 1000);
+        assertEquals(4000, account.getAccountBalance());
 
+    }
+
+    @Test
+    void withdrawCashWithinBalanceTest(){
+        account.depositMoney(5000);
+        account.withdrawMoney(6000);
+        assertEquals(5000, account.getAccountBalance());
+    }
+
+    @Test
+    void accountWithdrawWithinBalanceAndPinTest(){
+        account.depositMoney(5000);
+        account.withdrawWithPin(1564, 6000);
+        assertEquals(5000, account.getAccountBalance());
+    }
+
+    @Test
+    void minimumBalanceWithPinTest(){
+        account.depositMoney(5000);
+        account.withdrawWithPin(1564, 7000);
+        assertEquals(5000, account.getAccountBalance());
+    }
+
+    @Test
+    void minimumBalanceTest(){
+        account.depositMoney(5000);
+        account.withdrawMoney(8000);
+        assertEquals(5000, account.getAccountBalance());
     }
 
 
 
+    @Test
+    void withdrawNotWithinBalanceDisplayMessageTest(){
+        account.depositMoney(5000);
+        account.withdrawWithPin(1564, 7000);
+    }
+
+    @Test
+    void wrongPinTrialTest(){
+        account.wrongPinTrial(1564);
+        account.wrongPinTrial(0000);
+
+    }
 
 
 }
