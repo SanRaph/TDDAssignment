@@ -6,6 +6,7 @@ public class Account {
 
     private int accountBalance;
     //@todo Mr Raph, Pin numbers are not constants, users are allowed to change their pins when they wish. Create methods for them to change their pins instead of hardcoding a default pin
+    //Ok, thanks
     static int PIN = 1564;
 
 
